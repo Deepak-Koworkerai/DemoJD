@@ -4,13 +4,14 @@ from logs import store_agent_output
 import os
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
+import google.generativeai as genai
 
 
 # Load variables from the .env file into the environment
 load_dotenv()
 
 api_key = os.getenv("GOOGLE_API_KEY")
-
+genai.configure(api_key)
 
 llm = ChatGoogleGenerativeAI(model="gemini-pro",
                              verbose=True,
