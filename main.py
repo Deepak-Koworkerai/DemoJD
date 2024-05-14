@@ -5,12 +5,14 @@ from crewai import Crew, Process
 from Agents import Agents
 from Tasks import Tasks
 from logs import store_agent_output
+import google.generativeai as genai
 
 
 # Load variables from the .env file into the environment
 load_dotenv()
 
 api_key = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key)
 
 
 llm = ChatGoogleGenerativeAI(model="gemini-pro",
